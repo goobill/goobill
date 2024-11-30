@@ -1,0 +1,250 @@
+html, body {
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    font-family: "Arial", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    height: 100%;
+}
+
+.header {
+    background-color: #ececec;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-bottom: 1px solid #c0c0c0;;
+}
+
+.sub-header {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 15px;
+    border-bottom: 1px solid #c0c0c0;;
+    padding-left: 5%;
+    white-space: nowrap;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.sub-header a {
+    color: black;
+    text-decoration:none;
+}
+
+.sub-header a[selected='true'] {
+    color: #eb4b4b;
+    border-bottom: 2px solid #eb4b4b;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 100%;
+}
+.search-logo img {
+    height: 50px;
+    width: 50px;
+    display: none;
+}
+.search-title {
+    font-size: 0;
+    text-decoration:none;
+}
+.search-title span {
+    font-weight: bold;
+    font-size: 40px;
+}
+.blue {
+    color: #4285F4;
+}
+.red {
+    color: #EA4335;
+}
+.yellow {
+    color: #FBBC05;
+}
+.green {
+    color: #34A853;
+}
+
+.search-bar {
+    background-color: #FFFFFF;
+    display: flex;         
+    border-radius: 5px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;      
+    gap: 20px;
+    border: 1px solid #c0c0c0;
+    height: 30px;
+    padding: 5px;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-left: 10px;
+    width: 600px;
+}
+.search-bar input::placeholder {
+    color: rgb(168, 168, 168);
+}
+
+.icon-hist {
+    height: 20px;
+    width: 20px;
+}
+
+.icon-mag-mic {
+    height: 25px;
+    width: 25px;
+}
+
+#search-bar-button {
+    display: flex;         
+    flex-direction: row;
+    justify-content: center;       
+    align-items: center;
+    background-color: #008cff;
+    border: 1px solid #f6f6f6;
+    outline: none;
+    color: black;
+    border-radius: 7px;
+    padding: 6px 30px;
+    cursor: pointer; 
+    text-align: center;
+    font-size: 14px;
+    text-decoration:none;
+}
+#search-bar-button a {
+    background-color: #008cff;
+}
+
+#search-bar-button button:hover {
+    border: 1px solid #dcdcdc; /* Light gray border */
+}
+
+@media (max-width: 1000px) {
+    .search-bar {
+        flex: 1;
+    }
+}
+
+.results {
+    flex: 1;
+    display: flex;         
+    flex-direction: column;
+    /* justify-content: center;       
+    align-items: center;       */
+    gap: 20px;   
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.results-metrics {
+    color: #c5c5c5;
+    margin-top: 10px;
+}
+
+.results-empty {
+    height: 100%;
+}
+
+.result {
+    margin-left: 0px;
+    padding-bottom: 20px;
+}
+
+.result-date {
+    font-size: 12px;
+    color: #7c7c7c;
+}
+
+.result-url {
+    color: green;
+}
+
+.result-desc {
+    max-width: 700px;
+    padding-bottom: 5px;
+}
+
+.result-tags a {
+    font-size: 12px;
+    text-decoration:none;
+}
+
+.pagination {
+    display: flex;         
+    flex-direction: column;
+    gap: 20px;   
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+.pagination-center {
+    display: flex;         
+    flex-direction: column;
+    justify-content: center;       
+    align-items: center;      
+    width: 200px;
+}
+.pagination-title {
+    font-size: 0;
+}
+.pagination-title span {
+    font-weight: bold;
+    font-size: 25px;
+}
+.pagination-title a {
+    font-size: 15px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+@media (max-width: 1000px) {
+    .results {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    .sub-header {
+        padding-left: 30px;
+    }
+    .search-bar input {
+        width: 60%;
+    }
+    .search-title {
+        display: none;
+    }
+    .search-logo img {
+        display: block;
+    }
+}
+
+.footer {
+    background-color: #ececec;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
