@@ -18,6 +18,20 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
+    - name: Embed JSON into HTML
+      run: |
+          json_content=$(cat search.json)
+          json_content_escaped=$(echo "$json_content" | sed 's/[&]/\\&/g; s/[\'\"]/\\&/g')
+          sed -i "s|<script id=\"data-results\" type=\"application/json\">\[\]</script>|<script id=\"data-results\" type=\"application/json\">$json_content_escaped</script>|g" results.html
+
+    - name: Minify HTML files
+      run: |
+          npm install -g html-minifier
+
+          for file in *.html; do
+              html-minifier --collapse-whitespace --remove-comments --remove-optional-tags --minify-css true --minify-js true -o "$file" "$file"
+          done
+
     - name: Upload to blob storage $web
       uses: azure/cli@v2
       with:
