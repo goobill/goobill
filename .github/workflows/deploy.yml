@@ -22,7 +22,7 @@ jobs:
       uses: azure/cli@v2
       with:
         inlineScript: |
-            az storage blob upload-batch --account-name goobill --auth-mode key -d '$web' -s .
+            az storage blob upload-batch --account-name goobill --auth-mode login -d '$web' -s .
 
     - name: logout
       run: |
