@@ -12,15 +12,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: azure/login@v1
+    - uses: azure/login@v2
       with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
     - name: Upload to blob storage
-      uses: azure/CLI@v1
+      uses: azure/cli@v2
       with:
         inlineScript: |
             az storage blob upload-batch --account-name goobill --auth-mode key -d '$web' -s .
