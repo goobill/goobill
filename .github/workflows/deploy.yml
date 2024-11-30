@@ -12,7 +12,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: azure/login@v2
       with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
@@ -21,9 +21,7 @@ jobs:
 
     - name: Embed JSON into HTML
       run: |
-            json_content=$(cat search.json)
-            json_content_escaped=$(echo "$json_content" | sed "s/[&]/\\\\&/g; s/['\"]/\\\\\\0/g")
-            sed -i "s|<script id=\"data-results\" type=\"application/json\">\\[\\]</script>|<script id=\"data-results\" type=\"application/json\">$json_content_escaped</script>|g" results.html
+            sed -i '85r search.json' results.html
 
     - name: Minify HTML files
       run: |
