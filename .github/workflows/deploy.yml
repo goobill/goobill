@@ -21,9 +21,9 @@ jobs:
 
     - name: Embed JSON into HTML
       run: |
-          json_content=$(cat search.json)
-          json_content_escaped=$(echo "$json_content" | sed 's/[&]/\\&/g; s/[\'\"]/\\&/g')
-          sed -i "s|<script id=\"data-results\" type=\"application/json\">\[\]</script>|<script id=\"data-results\" type=\"application/json\">$json_content_escaped</script>|g" results.html
+            json_content=$(cat search.json)
+            json_content_escaped=$(echo "$json_content" | sed "s/[&]/\\\\&/g; s/['\"]/\\\\\\0/g")
+            sed -i "s|<script id=\"data-results\" type=\"application/json\">\\[\\]</script>|<script id=\"data-results\" type=\"application/json\">$json_content_escaped</script>|g" results.html
 
     - name: Minify HTML files
       run: |
