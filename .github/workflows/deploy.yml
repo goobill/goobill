@@ -27,6 +27,7 @@ jobs:
       run: |
           npm install --quiet
           node scripts/minify-html.js .
+          node scripts/docs-to-html.js ./docs
 
     - name: Cleanup extra files/folders
       run: |
@@ -37,11 +38,12 @@ jobs:
           rm -f package-lock.json
           rm -f search.json
 
-    - name: Upload to blob storage $web
+    - name: Drop and Upload to blob storage $web
       uses: azure/cli@v2
       with:
         inlineScript: |
-            az storage blob upload-batch --overwrite true --account-name goobill --auth-mode login -d '$web' -s .
+            az storage blob delete-batch --account-name goobill --auth-mode login -s '$web'
+            az storage blob upload-batch --account-name goobill --auth-mode login -d '$web' -s .
 
     - name: logout
       run: |
