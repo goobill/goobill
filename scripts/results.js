@@ -165,7 +165,7 @@ const app = function () {
     // Results
 
     const dataResultsDOM = document.getElementById('data-results')
-    let resultsMatrix = dataResultsDOM ? JSON.parse(dataResultsDOM.textContent || "[]") : [];
+    let resultsMatrix = dataResultsDOM ? JSON.parse(dataResultsDOM.textContent.trim() || "[]") : [];
     if (query) {
         resultsMatrix = queryResults(resultsMatrix, query)
     }

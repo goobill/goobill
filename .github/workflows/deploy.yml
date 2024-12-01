@@ -13,11 +13,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - uses: azure/login@v2
+
+    - name: Build & Deploy Worker
+      uses: cloudflare/wrangler-action@v3
       with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
     - name: Embed JSON into HTML
       run: |
@@ -27,25 +28,23 @@ jobs:
       run: |
           npm install --quiet
           node scripts/minify-html.js .
-          node scripts/docs-to-html.js ./docs
 
     - name: Cleanup extra files/folders
       run: |
           rm -rf node_modules
+          rm -rf docs
           rm -rf .git
           rm -rf .github
+          rm -f .gitignore
           rm -f package.json
           rm -f package-lock.json
           rm -f search.json
 
-    - name: Drop and Upload to blob storage $web
-      uses: azure/cli@v2
-      with:
-        inlineScript: |
-            az storage blob delete-batch --account-name goobill --auth-mode login -s '$web'
-            az storage blob upload-batch --account-name goobill --auth-mode login -d '$web' -s .
-
-    - name: logout
+    - name: Upload to Cloudflare pages
       run: |
-            az logout
+          npx wrangler pages deploy --project-name --branch=main goobill .
+
+    - name: Logout
+      run: |
+          npx wrangler logout
       if: always()
