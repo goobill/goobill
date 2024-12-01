@@ -1,0 +1,24 @@
+{
+  "name": "goobill",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goobill/goobill.git"
+  },
+  "author": "bill",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/goobill/goobill/issues"
+  },
+  "homepage": "https://github.com/goobill/goobill#readme",
+  "description": "Node packages for git workflow",
+  "dependencies": {
+    "@mdx-js/mdx": "^3.1.0",
+    "@mdx-js/react": "^3.1.0",
+    "fs-extra": "^11.2.0",
+    "html-minifier": "^4.0.0",
+    "minimize": "^2.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}

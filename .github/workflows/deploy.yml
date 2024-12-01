@@ -25,11 +25,8 @@ jobs:
 
     - name: Minify HTML files
       run: |
-          npm install -g html-minifier
-
-          for file in *.html; do
-              html-minifier --collapse-whitespace --remove-comments --remove-optional-tags --minify-css true --minify-js true -o "$file" "$file"
-          done
+          npm install
+          node scripts/minify-html.js .
 
     - name: Upload to blob storage $web
       uses: azure/cli@v2

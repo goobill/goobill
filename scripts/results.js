@@ -138,8 +138,6 @@ const renderResult = function (resultsDOM, result) {
             tagsDOM.appendChild(dashDOM);
         }
     })
- 
-    
 }
 
 const app = function () {
