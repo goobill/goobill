@@ -25,14 +25,14 @@ jobs:
 
     - name: Minify HTML files
       run: |
-          npm install
+          npm install --quiet
           node scripts/minify-html.js .
 
     - name: Upload to blob storage $web
       uses: azure/cli@v2
       with:
         inlineScript: |
-            az storage blob upload-batch --account-name goobill --auth-mode login -d '$web' -s .
+            az storage blob upload-batch --overwrite true --account-name goobill --auth-mode login -d '$web' -s .
 
     - name: logout
       run: |
