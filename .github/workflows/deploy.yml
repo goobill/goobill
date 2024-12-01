@@ -21,7 +21,7 @@ jobs:
     - name: Minify HTML files
       run: |
           npm install --quiet
-          node scripts/minify-html.js .
+          node scripts/minify-html.cjs .
 
     - name: Cleanup extra files/folders
       run: |
