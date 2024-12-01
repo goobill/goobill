@@ -1,8 +1,13 @@
-const fs = require("fs-extra");
-const path = require("path");
-const { compile } = require("@mdx-js/mdx");
-const React = require("react");
-const { renderToStaticMarkup } = require("react-dom/server");
+import fs from "fs-extra";
+import path from "path";
+import { fileURLToPath } from "url";
+import { compile } from "@mdx-js/mdx";
+import React from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+
+// Utility to resolve __dirname in ESM
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 async function convertMarkdownToHTML(inputDir, outputDir) {
   try {
@@ -41,7 +46,7 @@ async function convertMarkdownToHTML(inputDir, outputDir) {
 }
 
 // Get the input directory from command line arguments
-const inputDir = path.resolve(process.argv[2] || "docs"); // Default to "docs" if not provided
+const inputDir = path.resolve(process.argv[2] || path.join(__dirname, "docs")); // Default to "docs" if not provided
 const outputDir = path.resolve(".");   // Root directory for the output
 
 convertMarkdownToHTML(inputDir, outputDir);
