@@ -28,6 +28,15 @@ jobs:
           npm install --quiet
           node scripts/minify-html.js .
 
+    - name: Cleanup extra files/folders
+      run: |
+          rm -rf node_modules
+          rm -rf .git
+          rm -rf .github
+          rm -f package.json
+          rm -f package-lock.json
+          rm -f search.json
+
     - name: Upload to blob storage $web
       uses: azure/cli@v2
       with:
