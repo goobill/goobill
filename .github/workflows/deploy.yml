@@ -39,7 +39,7 @@ jobs:
       with:
         apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        command: pages deploy --project-name --branch=main goobill .
+        command: pages deploy . --project-name=goobill --branch=main
 
     - name: Logout
       run: |
