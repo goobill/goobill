@@ -18,10 +18,18 @@ jobs:
       run: |
             sed -i '85r search.json' results.html
 
-    - name: Minify HTML files
+    - name: Node setup
       run: |
           npm install --quiet
-          node scripts/minify-html.cjs .
+
+    - name: Docs to HTML
+      run: |
+          npm run convert
+          cp -p docs/*.html .
+
+    - name: Minify HTML/JS/CSS files
+      run: |
+          npm run minify
 
     - name: Cleanup extra files/folders
       run: |
@@ -34,14 +42,13 @@ jobs:
           rm -f package-lock.json
           rm -f search.json
 
+    - name: Create site map
+      run: |
+          for file in ./*.html; do echo "https://goobill.com/$(basename "$file")"; done > sitemap.txt
+
     - name: Upload to Cloudflare pages
       uses: cloudflare/wrangler-action@v3
       with:
         apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         command: pages deploy . --project-name=goobill --branch=main
-
-    - name: Logout
-      run: |
-          npx wrangler logout
-      if: always()
