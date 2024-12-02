@@ -1,35 +1,3 @@
-# Embass.io
-
-*Sep 14, 2021*
-
-![Website Screenshot](/embass_snap.PNG)
-
-### Origin Story
-
-During lockdown my friend tried to go to America to work on boats, however, he struggled to find any US embassy appointments as the London branch was closed. He jokingly asked me "Bill could you just make me a website to find the closest US embassy with the shortest waiting time", as the Gov website requires you to manually lookup each embassy to check the waiting times.
-
-After a quick look at the network calls made from the website I could see a simple approach to extract all the waiting times of all embassies. Combining this information with the embassies location data, I could recommend to my friend the best embassy.
-
-### Architecture
-
-As the project was simple I chose to publish it onto a website for anyone to use.
-
-I didn't want to abuse the links the GOV website had exposed so I devised a JS funciton on the cloud to call the oldest scraped embassy on the DB and repeat this process every hour during UK hours. This means the frequency I'm sending requests is very low.
-
-I hosted the website on Vercel and used Next 13 as it pre-renders all pages (which aren't dynamic) and improves SEO ranking due to sending raw HTML to the client side.
-
-For styling the website I opted for Tailwind due to it's simplicity and ability to create great results fast, perfect for making a small app/website.
-
-![Website Screenshot](/embass_map_snap.PNG)
-
-Rather than using a paid map API service, like Google Maps, I implemented a simplified version of a map using the [D3](https://d3js.org/) library to render close embassies. The implementation works pretty well for giving the website more content, however, the end user would prefer more functionality. An improvement would be using [OSM](https://www.openstreetmap.org/).
-
-### Overview
-
-**Site**: [link](https://embass.io)
-
-**Technologies:** *MongoDB, Next 13 (server side rendering), Tailwind, Cloud JS functions*
-
 # Game
 
 *Feb 16, 2020*
@@ -116,21 +84,3 @@ Instead, all of the numbers from 0 to 9 were instantiated as strings and stored 
 **Site**: [link](https://play.google.com/store/apps/details?id=com.underscorerocks.rocks)
 
 **Technologies:** *Unity, C#, Adsense, Adobe*
-
-# Goobill
-
-*Nov 20, 2021*
-
-![Website Screenshot](/goobill_snap.PNG)
-
-### Origin Story
-
-My friends who don't understand what I do, joked about me working for google, becoming CEO and renaming it to Goobill. So one day I made a spoof of Google and called it Goobill. I then later converted it to my portfolio page allowing people to "search" my projects. 
-
-### Architecture
-
-The main home page is TailwindCSS and React, however, all other pages origanted as a Markdown file and were pre-rendered to an HTML file. One markdown to another. Utilising [NextJS Mdx](https://nextjs.org/docs/pages/building-your-application/configuring/mdx) and [Github Markdown CSS](https://github.com/sindresorhus/github-markdown-css) to pre-render the files. What's interesting is if you inspect element the generated HTML, it's perfect for SEO optimisation.
-
-### Overview
-
-**Technologies:** *Next 13 (server side rendering), Tailwind*

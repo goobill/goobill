@@ -14,95 +14,102 @@ function wrapWithDiv() {
       {
         type: 'element',
         tagName: 'div',
-        properties: { className: ['header'] },
+        properties: { className: ['container'] },
         children: [
           {
             type: 'element',
-            tagName: 'a',
-            properties: { href: 'index.html', className: ['search-logo'] },
+            tagName: 'div',
+            properties: { className: ['header'] },
             children: [
               {
                 type: 'element',
-                tagName: 'img',
-                properties: { src: 'favicon.ico', alt: 'logo' },
+                tagName: 'a',
+                properties: { href: 'index.html', className: ['search-logo'] },
+                children: [
+                  {
+                    type: 'element',
+                    tagName: 'img',
+                    properties: { src: 'favicon.ico', alt: 'logo' },
+                  },
+                ],
+              },
+              {
+                type: 'element',
+                tagName: 'a',
+                properties: { href: 'index.html', className: ['search-title'] },
+                children: [
+                  { type: 'element', tagName: 'span', properties: { className: ['blue'] }, children: [{ type: 'text', value: 'G' }] },
+                  { type: 'element', tagName: 'span', properties: { className: ['red'] }, children: [{ type: 'text', value: 'o' }] },
+                  { type: 'element', tagName: 'span', properties: { className: ['yellow'] }, children: [{ type: 'text', value: 'o' }] },
+                  { type: 'element', tagName: 'span', properties: { className: ['blue'] }, children: [{ type: 'text', value: 'b' }] },
+                  { type: 'element', tagName: 'span', properties: { className: ['green'] }, children: [{ type: 'text', value: 'i' }] },
+                      { type: 'element', tagName: 'span', properties: { className: ['red'] }, children: [{ type: 'text', value: 'l' }] },
+                      { type: 'element', tagName: 'span', properties: { className: ['red'] }, children: [{ type: 'text', value: 'l' }] },
+                    ],
+                  },
+                ],
+          },
+          {
+            type: 'element',
+            tagName: 'div',
+            properties: { className: ['markdown-blob'] },
+            children: [
+              {
+                type: 'element',
+                tagName: 'article',
+                properties: { className: ['markdown-body'] },
+                children: tree.children,
               },
             ],
           },
           {
             type: 'element',
-            tagName: 'a',
-            properties: { href: 'index.html', className: ['search-title'] },
+            tagName: 'div',
+            properties: { className: ['footer'] },
             children: [
-              { type: 'element', tagName: 'span', properties: { className: ['blue'] }, children: [{ type: 'text', value: 'G' }] },
-              { type: 'element', tagName: 'span', properties: { className: ['red'] }, children: [{ type: 'text', value: 'o' }] },
-              { type: 'element', tagName: 'span', properties: { className: ['yellow'] }, children: [{ type: 'text', value: 'o' }] },
-              { type: 'element', tagName: 'span', properties: { className: ['blue'] }, children: [{ type: 'text', value: 'b' }] },
-              { type: 'element', tagName: 'span', properties: { className: ['green'] }, children: [{ type: 'text', value: 'i' }] },
-              { type: 'element', tagName: 'span', properties: { className: ['red'] }, children: [{ type: 'text', value: 'l' }] },
-              { type: 'element', tagName: 'span', properties: { className: ['red'] }, children: [{ type: 'text', value: 'l' }] },
+              {
+                type: 'element',
+                tagName: 'marquee',
+                children: [
+                  {
+                    type: 'element',
+                    tagName: 'a',
+                    properties: { className: ['footer-button'], href: "about.html"},
+                    children: [
+                      {
+                        type: 'text',
+                        value: "About",
+                      },
+                    ],
+                  },
+                  {
+                    type: 'element',
+                    tagName: 'a',
+                    properties: { className: ['footer-button'], href: "store.html"},
+                    children: [
+                      {
+                        type: 'text',
+                        value: "Store",
+                      },
+                    ],
+                  },
+                  {
+                    type: 'element',
+                    tagName: 'a',
+                    properties: { className: ['footer-button'], href: "cursed.html"},
+                    children: [
+                      {
+                        type: 'text',
+                        value: "Help",
+                      },
+                    ],
+                  },
+                ]
+              },
             ],
           },
         ],
-      },
-      {
-        type: 'element',
-        tagName: 'div',
-        properties: { className: ['markdown-blob'] },
-        children: [
-          {
-            type: 'element',
-            tagName: 'article',
-            properties: { className: ['markdown-body'] },
-            children: tree.children,
-          },
-        ],
-      },
-      {
-        type: 'element',
-        tagName: 'div',
-        properties: { className: ['footer'] },
-        children: [
-          {
-            type: 'element',
-            tagName: 'marquee',
-            children: [
-              {
-                type: 'element',
-                tagName: 'a',
-                properties: { className: ['footer-button'], href: "about.html"},
-                children: [
-                  {
-                    type: 'text',
-                    value: "About",
-                  },
-                ],
-              },
-              {
-                type: 'element',
-                tagName: 'a',
-                properties: { className: ['footer-button'], href: "store.html"},
-                children: [
-                  {
-                    type: 'text',
-                    value: "Store",
-                  },
-                ],
-              },
-              {
-                type: 'element',
-                tagName: 'a',
-                properties: { className: ['footer-button'], href: "cursed.html"},
-                children: [
-                  {
-                    type: 'text',
-                    value: "Help",
-                  },
-                ],
-              },
-            ]
-          },
-        ],
-      },
+      }
     ];
   };
 }
