@@ -1,3 +1,5 @@
+![Cool Image](assets/img/DALL-5.PNG)
+
 ## Howdy
 
 I'm Bill

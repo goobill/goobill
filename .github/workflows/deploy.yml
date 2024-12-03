@@ -27,6 +27,11 @@ jobs:
           npm run convert
           cp -p docs/*.html .
 
+    - name: Create site map
+      run: |
+          for file in ./*.html; do echo "https://goobill.com/$(basename "$file")"; done > sitemap.txt
+          for file in ./*.html; do echo "<a href=\"$(basename "$file")\">$(basename "$file")</a>"; done | sed -i '38r /dev/stdin' site-map.html
+
     - name: Minify HTML/JS/CSS files
       run: |
           npm run minify
@@ -41,10 +46,6 @@ jobs:
           rm -f package.json
           rm -f package-lock.json
           rm -f search.json
-
-    - name: Create site map
-      run: |
-          for file in ./*.html; do echo "https://goobill.com/$(basename "$file")"; done > sitemap.txt
 
     - name: Upload to Cloudflare pages
       uses: cloudflare/wrangler-action@v3

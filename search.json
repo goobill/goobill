@@ -1,5 +1,13 @@
 [
     {
+        "title": "Bill's TODO list on this site",
+        "path": "todo.html",
+        "url": "www.goobill.com",
+        "description": "The top tasks I want to complete on this site. Can include future, backlog or ongoing tasks.",
+        "category": ["portfolio", "goobill"],
+        "tags": ["static", "cloudflare"]
+    },
+    {
         "title": "Top search enginge Goobill",
         "path": "goobill.html",
         "url": "www.goobill.com",
@@ -8,7 +16,7 @@
             "label": "July 7th 2018",
             "value": "2018-07-07"
         },
-        "category": ["portfolio"],
+        "category": ["portfolio", "goobill"],
         "tags": ["static", "cloudflare"]
     },
     {
@@ -16,19 +24,19 @@
         "path": "embass_io.html",
         "url": "www.embass.io",
         "description": "Search current location for the top US embassies nearby, sorted by waiting time for convenience.",
-        "category": ["portfolio"],
+        "category": ["portfolio", "embass.io"],
         "tags": ["nextjs", "azure"]
     },
     {
         "title": "Top Android game of the year 2021",
-        "path": "userscore_rocks.html",
+        "path": "underscore_rocks.html",
         "url": "https://play.google.com/store/apps/details?id=com.underscorerocks.rocks",
         "description": "Destroy asteroids with a laser as they descend onto the rocky surface.",
         "datetime": {
             "label": "July 7th 2018",
             "value": "2018-07-07"
         },
-        "category": ["portfolio"],
+        "category": ["portfolio", "underscore_rocks"],
         "tags": ["unity", "android"]
     }
 ]

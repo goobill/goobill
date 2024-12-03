@@ -29,7 +29,7 @@ function wrapWithDiv() {
                   {
                     type: 'element',
                     tagName: 'img',
-                    properties: { src: 'favicon.ico', alt: 'logo' },
+                    properties: { src: 'favicon/favicon.svg', alt: 'logo' },
                   },
                 ],
               },
@@ -85,11 +85,11 @@ function wrapWithDiv() {
                   {
                     type: 'element',
                     tagName: 'a',
-                    properties: { className: ['footer-button'], href: "store.html"},
+                    properties: { className: ['footer-button'], href: "site-map.html"},
                     children: [
                       {
                         type: 'text',
-                        value: "Store",
+                        value: "Site Map",
                       },
                     ],
                   },
@@ -117,7 +117,8 @@ function wrapWithDiv() {
 async function processMarkdownFiles(directory) {
   try {
     const files = await fs.readdir(directory);
-    const markdownFiles = files.filter((file) => file.endsWith('.md') || file.endsWith('.mdx'));
+    // const markdownFiles = files.filter((file) => file.endsWith('.md') || file.endsWith('.mdx'));
+    const markdownFiles = files.filter((file) => file.endsWith('todo.md'));
 
     for (const file of markdownFiles) {
       const inputFile = join(directory, file);
@@ -129,12 +130,18 @@ async function processMarkdownFiles(directory) {
         css: ["style/md.css", "style/results.css"],
         js: [],
         language: "en",
-        link: [],
+        link: [
+          {href: '/favicon/favicon-96x96.png', rel: 'icon', type: "image/png", sizes: '96x96'},
+          {href: '/favicon/favicon.svg', rel: 'icon', type: "image/svg+xml", sizes: '96x96'},
+          {href: '/favicon/favicon.ico', rel: 'shortcut icon'},
+          {href: '/favicon/apple-touch-icon.png', rel: 'apple-touch-icon', type: "image/png", sizes: '180x180'},
+          {href: '/favicon/site.webmanifest', rel: 'manifest'},
+        ],
         meta: [
-          // {
-          //   "name": "viewport",
-          //   "content": "width=device-width, initial-scale=1.0"
-          // }
+          {
+            "name": "apple-mobile-web-app-title",
+            "content": "Goobill"
+          }
         ],
         responsive: true,
         script: [],
