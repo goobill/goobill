@@ -16,7 +16,7 @@ jobs:
 
     - name: Embed JSON into HTML
       run: |
-            sed -i '85r search.json' results.html
+            sed -i '50r search.json' results.html
 
     - name: Node setup
       run: |

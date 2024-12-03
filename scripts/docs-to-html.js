@@ -117,8 +117,7 @@ function wrapWithDiv() {
 async function processMarkdownFiles(directory) {
   try {
     const files = await fs.readdir(directory);
-    // const markdownFiles = files.filter((file) => file.endsWith('.md') || file.endsWith('.mdx'));
-    const markdownFiles = files.filter((file) => file.endsWith('todo.md'));
+    const markdownFiles = files.filter((file) => file.endsWith('.md') || file.endsWith('.mdx'));
 
     for (const file of markdownFiles) {
       const inputFile = join(directory, file);
