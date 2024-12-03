@@ -1,4 +1,4 @@
-![Cool Image](assets/img/DALL-7.PNG)
+![Cool Image](assets/img/DALL-7.png)
 
 # Example of TODO.md
 
