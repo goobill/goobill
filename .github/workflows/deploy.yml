@@ -30,7 +30,7 @@ jobs:
     - name: Create site map
       run: |
           for file in ./*.html; do echo "https://goobill.com/$(basename "$file")"; done > sitemap.txt
-          for file in ./*.html; do echo "<a href=\"$(basename "$file")\">$(basename "$file")</a>"; done | sed -i '38r /dev/stdin' site-map.html
+          for file in ./*.html; do echo "<a href=\"$(basename "$file")\">$(basename "$file")</a>"; done | sed -i '34r /dev/stdin' site-map.html
 
     - name: Minify HTML/JS/CSS files
       run: |
