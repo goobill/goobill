@@ -14,38 +14,48 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Embed JSON into HTML
+    - name: Move HTML pages
       run: |
-            sed -i '88r search.json' results.html
+        cp -p pages/*.html .
+
+    - name: Embed JSON into results HTML
+      run: |
+        results_line_number=$(grep -n -m 1 "<div id=\"results\" class=\"results\">" pages/site-map.html | sed -n 's/[^0-9]//gp')
+        sed -i '${results_line_number}r search.json' results.html
 
     - name: Node setup
       run: |
-          npm install --quiet
+        npm install --quiet
 
     - name: Docs to HTML
       run: |
-          npm run convert
-          cp -p docs/*.html .
+        npm run resize
+        cp -p docs/*.html .
+        cp -p -r docs/assets/* ./assets
+        npm run convert
 
-    - name: Create site map
+    - name: Create site map HTML and TXT
       run: |
-          for file in ./*.html; do echo "https://goobill.com/$(basename "$file")"; done > sitemap.txt
-          for file in ./*.html; do echo "<a href=\"$(basename "$file")\">$(basename "$file")</a>"; done | sed -i '34r /dev/stdin' site-map.html
+        for file in ./*.html; do echo "https://goobill.com/$(basename "$file")"; done > sitemap.txt
+        results_line_number=$(grep -n -m 1 "<div id=\"results\" class=\"results\">" pages/site-map.html | sed -n 's/[^0-9]//gp')
+        for file in ./*.html; do echo "<a href=\"$(basename "$file")\">$(basename "$file")</a>"; done | sed -i '${results_line_number}r /dev/stdin' site-map.html
 
     - name: Minify HTML/JS/CSS files
       run: |
-          npm run minify
+        npm run minify
 
     - name: Cleanup extra files/folders
       run: |
-          rm -rf node_modules
-          rm -rf docs
-          rm -rf .git
-          rm -rf .github
-          rm -f .gitignore
-          rm -f package.json
-          rm -f package-lock.json
-          rm -f search.json
+        rm -rf node_modules
+        rm -rf pages
+        rm -rf docs
+        rm -rf .git
+        rm -rf .github
+        rm -f README.md
+        rm -f .gitignore
+        rm -f package.json
+        rm -f package-lock.json
+        rm -f search.json
 
     - name: Upload to Cloudflare pages
       uses: cloudflare/wrangler-action@v3

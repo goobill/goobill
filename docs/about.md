@@ -1,4 +1,4 @@
-![Cool Image](assets/img/DALL-5.png)
+![Cool Image](assets/DALL-5.png)
 
 ## Howdy
 

@@ -2,7 +2,7 @@
 
 *Nov 20, 2021*
 
-![Website Screenshot](assets/img/goobill_snap.PNG)
+![Website Screenshot](assets/goobill_snap.PNG)
 
 ### Origin Story
 
