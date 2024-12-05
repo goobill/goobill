@@ -2,7 +2,7 @@
 
 *Sep 14, 2021*
 
-![Website Screenshot](assets/embass_snap.PNG)
+![Website Screenshot](assets/embass_snap.png)
 
 ### Origin Story
 
@@ -20,7 +20,7 @@ I hosted the website on Vercel and used Next 13 as it pre-renders all pages (whi
 
 For styling the website I opted for Tailwind due to it's simplicity and ability to create great results fast, perfect for making a small app/website.
 
-![Website Screenshot](assets/embass_map_snap.PNG)
+![Website Screenshot](assets/embass_map_snap.png)
 
 Rather than using a paid map API service, like Google Maps, I implemented a simplified version of a map using the [D3](https://d3js.org/) library to render close embassies. The implementation works pretty well for giving the website more content, however, the end user would prefer more functionality. An improvement would be using [OSM](https://www.openstreetmap.org/).
 
