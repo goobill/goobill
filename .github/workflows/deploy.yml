@@ -30,9 +30,9 @@ jobs:
     - name: Docs to HTML
       run: |
         npm run resize
+        npm run convert
         cp -p docs/*.html .
         cp -p -r docs/assets/* ./assets
-        npm run convert
 
     - name: Create site map HTML and TXT
       run: |
