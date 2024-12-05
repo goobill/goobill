@@ -20,7 +20,7 @@ jobs:
 
     - name: Embed JSON into results HTML
       run: |
-        results_line_number=$(grep -n -m 1 "<div id=\"results\" class=\"results\">" results.html | sed -n "s/[^0-9]//gp")
+        results_line_number=$(grep -n -m 1 "<script id=\"data-results\" type=\"application/json\">" results.html | sed -n "s/[^0-9]//gp")
         sed -i "${results_line_number}r search.json" results.html
 
     - name: Node setup
