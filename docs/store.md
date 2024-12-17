@@ -2,4 +2,4 @@
 
 ## Howdy
 
-I'm Bill
+I'm Bill what would you like to purchase

@@ -30,8 +30,11 @@
                 <span class="red">l</span>
                 <span class="red">l</span>
             </a>
+            <b>
+              TREASURE MAP
+            </b>
         </div>
-        <div id="results" class="results">
+        <div id="results" class="results" style="padding-top: 10px">
         </div>
         <div class="footer">
             <marquee>
@@ -43,6 +46,3 @@
     </div>
   </body>
 </html>
-
-
-grep -n -m 1 "<div id=\"results\" class=\"results\">" pages/site-map.html | sed -n 's/[^0-9]//gp'
