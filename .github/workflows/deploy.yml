@@ -37,7 +37,7 @@ jobs:
     - name: Create site map HTML and TXT
       run: |
         for file in ./*.html; do echo "https://goobill.com/$(basename "$file")"; done > sitemap.txt
-        results_line_number=$(grep -n -m 1 "<div id=\"results\" class=\"results\">" site-map.html | sed -n "s/[^0-9]//gp")
+        results_line_number=$(grep -n -m 1 "<div id=\"results\"" site-map.html | sed -n "s/[^0-9]//gp")
         for file in ./*.html; do echo "<a href=\"$(basename "$file")\">$(basename "$file")</a>"; done | sed -i "${results_line_number}r /dev/stdin" site-map.html
 
     - name: Minify HTML/JS/CSS files
