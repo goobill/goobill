@@ -37,7 +37,7 @@
     },
     {
         "title": "US Embassy wait times",
-        "path": "embass.io",
+        "path": "https://embass.io",
         "url": "www.embass.io",
         "description": "Search current location for the top US embassies nearby, sorted by waiting time for convenience.",
         "datetime": {
@@ -49,7 +49,7 @@
     },
     {
         "title": "Dashboard Generator",
-        "path": "dash.goobill.com",
+        "path": "https://dash.goobill.com",
         "url": "dash.goobill.com",
         "description": "Combine web links, of either websites or widgets, to make a dashboard, all on one web page.",
         "datetime": {
@@ -72,8 +72,8 @@
         "tags": ["static", "cloudflare"]
     },
     {
-        "title": "Browser Artwork",
-        "path": "artist.goobill.com",
+        "title": "Artwork Generator",
+        "path": "https://artist.goobill.com",
         "url": "artist.goobill.com",
         "description": "Ever wanted to be an artist? Nows your change, for a low low price of one browser page.",
         "datetime": {
@@ -97,7 +97,7 @@
     },
     {
         "title": "Goobill",
-        "path": "goobill.com",
+        "path": "https://goobill.com",
         "url": "goobill.com",
         "description": "Top search engine on the internet, says bill.",
         "datetime": {
