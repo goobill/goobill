@@ -1,14 +1,6 @@
 [
     {
-        "title": "Bill's TODO list on this site",
-        "path": "todo.html",
-        "url": "www.goobill.com/todo",
-        "description": "The top tasks I want to complete on this site. Can include future, backlog or ongoing tasks.",
-        "category": ["blogs", "goobill"],
-        "tags": ["static", "cloudflare"]
-    },
-    {
-        "title": "Top search enginge Goobill",
+        "title": "Top search engine Goobill",
         "path": "goobill.html",
         "url": "www.goobill.com",
         "description": "Top search engine on the internet, says bill",
@@ -16,12 +8,36 @@
             "label": "November 20th 2021",
             "value": "2021-11-20"
         },
-        "category": ["portfolio", "goobill"],
+        "category": ["blog", "goobill"],
         "tags": ["static", "cloudflare"]
     },
     {
-        "title": "US embassy wait times",
-        "path": "embass_io.html",
+        "title": "Top Android game of the year 2021",
+        "path": "underscore-rocks.html",
+        "url": "https://play.google.com/store/apps/details?id=com.underscorerocks.rocks",
+        "description": "Destroy asteroids with a laser as they descend onto the rocky surface.",
+        "datetime": {
+            "label": "February 16th 2020",
+            "value": "2020-02-16"
+        },
+        "category": ["blog", "underscore", "rocks"],
+        "tags": ["unity", "android"]
+    },
+    {
+        "title": "Search shortest US embassy wait times",
+        "path": "embass-io.html",
+        "url": "www.embass.io",
+        "description": "Search current location for the top US embassies nearby, sorted by waiting time for convenience.",
+        "datetime": {
+            "label": "September 14th 2021",
+            "value": "2021-09-14"
+        },
+        "category": ["blog", "embass"],
+        "tags": ["nextjs", "azure"]
+    },
+    {
+        "title": "US Embassy wait times",
+        "path": "embass.io",
         "url": "www.embass.io",
         "description": "Search current location for the top US embassies nearby, sorted by waiting time for convenience.",
         "datetime": {
@@ -32,15 +48,63 @@
         "tags": ["nextjs", "azure"]
     },
     {
-        "title": "Top Android game of the year 2021",
-        "path": "underscore_rocks.html",
-        "url": "https://play.google.com/store/apps/details?id=com.underscorerocks.rocks",
-        "description": "Destroy asteroids with a laser as they descend onto the rocky surface.",
+        "title": "Dashboard Generator",
+        "path": "dash.goobill.com",
+        "url": "dash.goobill.com",
+        "description": "Combine web links, of either websites or widgets, to make a dashboard, all on one web page.",
         "datetime": {
-            "label": "February 16th 2020",
-            "value": "2020-02-16"
+            "label": "November 13th 2024",
+            "value": "2024-11-13"
         },
-        "category": ["portfolio", "underscore", "rocks"],
-        "tags": ["unity", "android"]
+        "category": ["portfolio", "dashboard"],
+        "tags": ["static", "cloudflare"]
+    },
+    {
+        "title": "Generate a dashboard using iFrames in the browser",
+        "path": "dashboard-generator.html",
+        "url": "dash.goobill.com",
+        "description": "Combine web links, of either websites or widgets, to make a dashboard, all on one web page.",
+        "datetime": {
+            "label": "November 13th 2024",
+            "value": "2024-11-13"
+        },
+        "category": ["blog", "dashboard"],
+        "tags": ["static", "cloudflare"]
+    },
+    {
+        "title": "Browser Artwork",
+        "path": "artist.goobill.com",
+        "url": "artist.goobill.com",
+        "description": "Ever wanted to be an artist? Nows your change, for a low low price of one browser page.",
+        "datetime": {
+            "label": "November 13th 2024",
+            "value": "2024-11-13"
+        },
+        "category": ["portfolio", "artist", "artwork"],
+        "tags": ["static", "cloudflare"]
+    },
+    {
+        "title": "Create web pages in the style of Piet Mondrian",
+        "path": "billdrian.html",
+        "url": "artist.goobill.com",
+        "description": "Design pieces of artworks in the style of Piet Mondrian using only the browser.",
+        "datetime": {
+            "label": "November 13th 2024",
+            "value": "2024-11-13"
+        },
+        "category": ["portfolio", "artist", "artwork"],
+        "tags": ["static", "cloudflare"]
+    },
+    {
+        "title": "Goobill",
+        "path": "goobill.com",
+        "url": "goobill.com",
+        "description": "Top search engine on the internet, says bill.",
+        "datetime": {
+            "label": "December 3rd 2024",
+            "value": "2024-12-03"
+        },
+        "category": ["portfolio", "goobill"],
+        "tags": ["static", "cloudflare"]
     }
 ]
