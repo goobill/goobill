@@ -92,7 +92,7 @@
             "label": "November 13th 2024",
             "value": "2024-11-13"
         },
-        "category": ["portfolio", "artist", "artwork"],
+        "category": ["blog", "artist", "artwork"],
         "tags": ["static", "cloudflare"]
     },
     {
