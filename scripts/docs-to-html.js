@@ -1,5 +1,6 @@
 import rehypeDocument from 'rehype-document';
 import rehypeFormat from 'rehype-format';
+import remarkGfm from 'remark-gfm'
 import rehypeStringify from 'rehype-stringify';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
@@ -149,6 +150,7 @@ async function processMarkdownFiles(directory) {
 
       const processedFile = await unified()
         .use(remarkParse)
+        .use(remarkGfm) // Support GFM (tables, autolinks, tasklists, strikethrough).
         .use(remarkRehype)
         .use(wrapWithDiv)
         .use(rehypeDocument, docOptions)
