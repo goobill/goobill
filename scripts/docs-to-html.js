@@ -115,11 +115,11 @@ function wrapWithDiv() {
   };
 }
 
-async function processMarkdownFiles(markdownDir, configPath) {
+async function processMarkdownFiles(directory, configPath) {
   try {
     const configs = await fs.readFile(configPath);
 
-    const files = await fs.readdir(markdownDir);
+    const files = await fs.readdir(directory);
     const markdownFiles = files.filter((file) => file.endsWith('.md') || file.endsWith('.mdx'));
 
     for (const file of markdownFiles) {
