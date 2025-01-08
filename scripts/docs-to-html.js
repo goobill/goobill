@@ -44,11 +44,11 @@ function wrapWithDiv() {
                   { type: 'element', tagName: 'span', properties: { className: ['yellow'] }, children: [{ type: 'text', value: 'o' }] },
                   { type: 'element', tagName: 'span', properties: { className: ['blue'] }, children: [{ type: 'text', value: 'b' }] },
                   { type: 'element', tagName: 'span', properties: { className: ['green'] }, children: [{ type: 'text', value: 'i' }] },
-                      { type: 'element', tagName: 'span', properties: { className: ['red'] }, children: [{ type: 'text', value: 'l' }] },
-                      { type: 'element', tagName: 'span', properties: { className: ['red'] }, children: [{ type: 'text', value: 'l' }] },
-                    ],
-                  },
+                  { type: 'element', tagName: 'span', properties: { className: ['red'] }, children: [{ type: 'text', value: 'l' }] },
+                  { type: 'element', tagName: 'span', properties: { className: ['red'] }, children: [{ type: 'text', value: 'l' }] },
                 ],
+              },
+            ],
           },
           {
             type: 'element',
@@ -115,18 +115,22 @@ function wrapWithDiv() {
   };
 }
 
-async function processMarkdownFiles(directory) {
+async function processMarkdownFiles(markdownDir, configPath) {
   try {
-    const files = await fs.readdir(directory);
+    const configs = await fs.readFile(configPath);
+
+    const files = await fs.readdir(markdownDir);
     const markdownFiles = files.filter((file) => file.endsWith('.md') || file.endsWith('.mdx'));
 
     for (const file of markdownFiles) {
       const inputFile = join(directory, file);
-      const outputFile = join(directory, file.replace(/\.(md|mdx)$/, '.html'));
-      const title = file.replace(/\.(md|mdx)$/, '')
+      const name = file.replace(/\.(md|mdx)$/, '')
+      const outputFile = join(directory, name + '.html');
+
+      const config = configs.filter(c => c.path && c.path.startsWith(name)).values().next().value
 
       const docOptions = {
-        title: title,
+        title: config ? config.title : name,
         css: ["style/md.css", "style/results.css"],
         js: [],
         language: "en",
@@ -136,17 +140,66 @@ async function processMarkdownFiles(directory) {
           {href: '/favicon/favicon.ico', rel: 'shortcut icon'},
           {href: '/favicon/apple-touch-icon.png', rel: 'apple-touch-icon', type: "image/png", sizes: '180x180'},
           {href: '/favicon/site.webmanifest', rel: 'manifest'},
-        ],
-        meta: [
-          {
-            "name": "apple-mobile-web-app-title",
-            "content": "Goobill"
-          }
+          {href: 'https://github.com/goobill', rel: 'author'}
+          // {href: '', rel: 'canonical'}
         ],
         responsive: true,
         script: [],
         style: [],
       };
+
+      if (config) {
+        docOptions["meta"] = [
+          // Google
+          {
+            "name": "description",
+            "content": config.description
+          },
+          {
+            "name": "keywords",
+            "content": config.tags.concat(config.datetime ? [config.datetime.label] : []).join(', ')
+          },
+          {
+            "name": "author",
+            "content": "Goobill"
+          },
+          {
+            "name": "publication_date",
+            "content": config.datetime ? config.datetime.value : null
+          },
+
+          // Facebook
+          {
+            "property": "og:url",
+            "content": config.path
+          },
+          {
+            "property": "og:image",
+            "content": config.splash
+          },
+          {
+            "property": "og:description",
+            "content": config.description
+          },
+          {
+            "property": "og:title",
+            "content": config.title
+          },
+          {
+            "property": "og:site_name",
+            "content": "Goobill"
+          },
+          {
+            "property": "og:see_also",
+            "content": "https://goobill.com"
+          },
+
+          {
+            "name": "apple-mobile-web-app-title",
+            "content": config.title
+          },
+        ]
+      }
 
       const processedFile = await unified()
         .use(remarkParse)
@@ -168,4 +221,7 @@ async function processMarkdownFiles(directory) {
   }
 }
 
-await processMarkdownFiles('./docs');
+const mdFileDir = './docs'
+const configFile = './search.json'
+
+await processMarkdownFiles(mdFileDir, configFile);

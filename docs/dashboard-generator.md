@@ -1,4 +1,4 @@
-![dash](assets/dash.png)
+![dash](assets/dash_blurred.png)
 
 # Create a dashboard
 
