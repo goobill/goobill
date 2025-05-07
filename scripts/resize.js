@@ -1,9 +1,12 @@
 import sharp from 'sharp';
 import { promises as fs } from 'fs';
-import { join } from 'path';
+import { join, extname, basename } from 'path';
 
-// Maximum width and height for resized images
-const MAX_SIZE = 700;
+const SIZES = [
+    { suffix: 'small', width: 640 },
+    { suffix: 'medium', width: 1920 },
+    { suffix: 'large', width: 2400 },
+];
 
 async function resizeImages(directory) {
     try {
@@ -13,21 +16,22 @@ async function resizeImages(directory) {
             const inputFile = join(directory, file);
 
             // Check if the file is an image
-            if (/\.(jpg|jpeg|png|webp|gif|tiff)$/i.test(file)) {
+            if (/\.(jpg|jpeg|png)$/i.test(file)) {
                 console.log(`Processing ${file}...`);
+                const ext = extname(file);
+                const name = basename(file, ext);
 
-                // Resize and overwrite the image
-                const buffer = await sharp(inputFile)
-                    .resize({
-                        width: MAX_SIZE,
-                        height: MAX_SIZE,
-                        fit: 'inside',
-                        withoutEnlargement: true // Prevent enlarging smaller images
-                    })
-                    .toBuffer();
-                sharp(buffer).toFile(inputFile);
-
-                console.log(`Resized and overwrote ${file}`);
+                for (const size of SIZES) {
+                    const outputFile = join(directory, `${name}_${size.suffix}${ext}`);
+                    await sharp(inputFile)
+                        .resize({
+                            width: size.width,
+                            fit: 'inside',
+                            withoutEnlargement: true
+                        })
+                        .toFile(outputFile);
+                    console.log(`Created ${outputFile}`);
+                }
             } else {
                 console.log(`${file} is not an image. Skipping.`);
             }
@@ -37,4 +41,4 @@ async function resizeImages(directory) {
     }
 }
 
-resizeImages("docs/assets");
+resizeImages('docs/assets');

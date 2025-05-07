@@ -9,6 +9,68 @@ import { join } from 'path';
 import { read, write } from 'to-vfile';
 import { unified } from 'unified';
 
+
+function addCanvas() {
+  return (tree) => {
+    const visit = (node, index, parent) => {
+      if (
+        node.type === 'element' &&
+        node.tagName === 'img' &&
+        node.properties?.alt === 'random'
+      ) {
+        const canvasNode = {
+          type: 'element',
+          tagName: 'canvas',
+          properties: {
+            // id: 'drawing',
+            width: 100,
+            height: 100,
+          },
+          children: [],
+        };
+
+        if (parent && typeof index === 'number') {
+          parent.children[index] = canvasNode;
+        }
+        return;
+      }
+
+      if (node.children && Array.isArray(node.children)) {
+        node.children.forEach((child, i) => visit(child, i, node));
+      }
+    };
+
+    visit(tree, null, null);
+  };
+}
+
+function addResponsiveImages() {
+  return (tree) => {
+    const visit = (node) => {
+      if (node.properties?.alt !== 'random' && node.type === 'element' && node.tagName === 'img' && node.properties?.src) {
+        const src = node.properties.src;
+        const match = src.match(/^(.*?)(\.[a-z]+)$/i);
+
+        if (match) {
+          const [_, base, ext] = match;
+          node.properties.src = `${base}_small${ext}`;
+          node.properties.srcset = [
+            `${base}_small${ext} 640w`,
+            `${base}_medium${ext} 1920w`,
+            `${base}_large${ext} 2400w`,
+          ].join(', ');
+        }
+      }
+
+      if (node.children) {
+        node.children.forEach(visit);
+      }
+    };
+
+    visit(tree);
+  };
+}
+
 function wrapWithDiv() {
   return (tree) => {
     tree.children = [
@@ -144,7 +206,7 @@ async function processMarkdownFiles(directory, configPath) {
           // {href: '', rel: 'canonical'}
         ],
         responsive: true,
-        script: [],
+        script: ["scripts/paint.js"],
         style: [],
       };
 
@@ -205,6 +267,8 @@ async function processMarkdownFiles(directory, configPath) {
         .use(remarkParse)
         .use(remarkGfm) // Support GFM (tables, autolinks, tasklists, strikethrough).
         .use(remarkRehype)
+        .use(addCanvas)
+        .use(addResponsiveImages)
         .use(wrapWithDiv)
         .use(rehypeDocument, docOptions)
         .use(rehypeFormat)

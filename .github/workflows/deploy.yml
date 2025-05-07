@@ -31,8 +31,8 @@ jobs:
       run: |
         npm run resize
         npm run convert
-        cp -p docs/*.html .
-        cp -p -r docs/assets/* ./assets
+        cp -pr docs/*.html .
+        cp -pr docs/assets/* ./assets
 
     - name: Create site map HTML and TXT
       run: |

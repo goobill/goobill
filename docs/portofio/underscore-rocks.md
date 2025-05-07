@@ -2,7 +2,7 @@
 
 *Feb 16, 2020*
 
-![Game Snapshot](assets/game_snap.png)
+![Game Snapshot](../assets/game_snap.png)
 
 ### Origin Story
 

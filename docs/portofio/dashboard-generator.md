@@ -1,10 +1,10 @@
-![dash](assets/dash_blurred.png)
+![dash](../assets/dash_blurred.png)
 
 # Create a dashboard
 
 Using the [dashboard generator](dash.goobill.com) you can embed different websites into one web page. The app allows you to customise the layout by adding or removing squares and dragging the borders to resize them.
 
-![dash](assets/dash_control.png)
+![dash](../assets/dash_control.png)
 
 Each square can be assigned a website/url to render the website inside that square. If the website needs to be refreshed at specific intervals, the rate at which the page is refreshed can be assinged in seconds.
 

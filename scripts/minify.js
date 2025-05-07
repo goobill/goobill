@@ -32,6 +32,6 @@ async function processHtmlFilesInDirectory(directory) {
   }
 }
 
-await processHtmlFilesInDirectory('.');
+// await processHtmlFilesInDirectory('.');
 await processHtmlFilesInDirectory('style');
 // await processHtmlFilesInDirectory('scripts');
