@@ -1,6 +1,8 @@
+![random](../assets/random.png)
+
 # Game
 
-*Feb 16, 2020*
+[portfolio](results?q=portfolio) / Feb 16, 2020
 
 ![Game Snapshot](../assets/game_snap.png)
 

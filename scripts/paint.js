@@ -1,4 +1,3 @@
-// https://nmcode.hashnode.dev/javascript-canvas-api-drawing-random-patterns
 const draw = function (ctx, width, height) {
     const size = 20;
     const columns = Math.floor(width / size);
@@ -12,31 +11,21 @@ const draw = function (ctx, width, height) {
     }
 };
 
-const getResponsiveDimensions = () => {
-    const w = window.innerWidth;
-    const h = window.innerHeight;
-
-    if (w >= 1024) {
-        // Desktop
-        return { width: w * 0.6, height: h * 0.3 };
-    } else if (w >= 768) {
-        // Tablet
-        return { width: w * 0.6, height: h * 0.65 };
-    } else {
-        // Phone
-        return { width: w * 0.95, height: h * 0.3 };
-    }
-};
-
 const app = function () {
     const canvases = document.querySelectorAll("canvas");
 
     canvases.forEach((canvas) => {
-        const { width, height } = getResponsiveDimensions();
-        canvas.width = width;
-        canvas.height = height;
-        const ctx = canvas.getContext("2d");
-        draw(ctx, width, height);
+        const parent = canvas.closest("p");
+        if (parent) {
+            const { width, height } = parent.getBoundingClientRect();
+            canvas.width = width;
+            canvas.height = height;
+            canvas.style.width = `${width}px`;
+            canvas.style.height = `${height}px`;
+
+            const ctx = canvas.getContext("2d");
+            draw(ctx, width, height);
+        }
     });
 };
 

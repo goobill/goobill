@@ -47,12 +47,18 @@ function addCanvas() {
 function addResponsiveImages() {
   return (tree) => {
     const visit = (node) => {
-      if (node.properties?.alt !== 'random' && node.type === 'element' && node.tagName === 'img' && node.properties?.src) {
+      if (
+        node.properties?.alt !== 'random' &&
+        node.type === 'element' &&
+        node.tagName === 'img' &&
+        node.properties?.src
+      ) {
         const src = node.properties.src;
         const match = src.match(/^(.*?)(\.[a-z]+)$/i);
 
         if (match) {
           const [_, base, ext] = match;
+
           node.properties.src = `${base}_small${ext}`;
           node.properties.srcset = [
             `${base}_small${ext} 640w`,
@@ -268,7 +274,7 @@ async function processMarkdownFiles(directory, configPath) {
         .use(remarkGfm) // Support GFM (tables, autolinks, tasklists, strikethrough).
         .use(remarkRehype)
         .use(addCanvas)
-        .use(addResponsiveImages)
+        // .use(addResponsiveImages)
         .use(wrapWithDiv)
         .use(rehypeDocument, docOptions)
         .use(rehypeFormat)
