@@ -16,16 +16,14 @@ const app = function () {
 
     canvases.forEach((canvas) => {
         const parent = canvas.closest("p");
-        if (parent) {
-            const { width, height } = parent.getBoundingClientRect();
-            canvas.width = width;
-            canvas.height = height;
-            canvas.style.width = `${width}px`;
-            canvas.style.height = `${height}px`;
+        const { width, height } = parent ? parent.getBoundingClientRect() : { width: 200, height: 100 };
+        canvas.width = width;
+        canvas.height = height;
+        canvas.style.width = `${width}px`;
+        canvas.style.height = `${height}px`;
 
-            const ctx = canvas.getContext("2d");
-            draw(ctx, width, height);
-        }
+        const ctx = canvas.getContext("2d");
+        draw(ctx, width, height);
     });
 };
 
