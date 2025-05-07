@@ -29,6 +29,7 @@ jobs:
 
     - name: Docs to HTML
       run: |
+        find docs -mindepth 2 -type f ! -path "docs/assets/*" -exec mv -t docs {} +
         npm run resize
         npm run convert
         cp -pr docs/*.html .

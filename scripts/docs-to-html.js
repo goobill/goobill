@@ -194,7 +194,7 @@ async function processMarkdownFiles(directory, configPath) {
       const docOptions = {
         title: config ? config.title : name,
         css: ["style/md.css", "style/results.css"],
-        js: [],
+        js: ["scripts/paint.js"],
         language: "en",
         link: [
           {href: '/favicon/favicon-96x96.png', rel: 'icon', type: "image/png", sizes: '96x96'},
@@ -206,7 +206,7 @@ async function processMarkdownFiles(directory, configPath) {
           // {href: '', rel: 'canonical'}
         ],
         responsive: true,
-        script: ["scripts/paint.js"],
+        script: [],
         style: [],
       };
 
