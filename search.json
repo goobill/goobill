@@ -1,41 +1,5 @@
 [
     {
-        "title": "Top search engine Goobill",
-        "path": "goobill.html",
-        "url": "www.goobill.com",
-        "description": "Top search engine on the internet, says bill",
-        "datetime": {
-            "label": "November 20th 2021",
-            "value": "2021-11-20"
-        },
-        "category": ["blog", "goobill"],
-        "tags": ["static", "cloudflare"]
-    },
-    {
-        "title": "Top Android game of the year 2021",
-        "path": "underscore-rocks.html",
-        "url": "https://play.google.com/store/apps/details?id=com.underscorerocks.rocks",
-        "description": "Destroy asteroids with a laser as they descend onto the rocky surface.",
-        "datetime": {
-            "label": "February 16th 2020",
-            "value": "2020-02-16"
-        },
-        "category": ["blog", "underscore", "rocks"],
-        "tags": ["unity", "android"]
-    },
-    {
-        "title": "Search shortest US embassy wait times",
-        "path": "embass-io.html",
-        "url": "www.embass.io",
-        "description": "Search current location for the top US embassies nearby, sorted by waiting time for convenience.",
-        "datetime": {
-            "label": "September 14th 2021",
-            "value": "2021-09-14"
-        },
-        "category": ["blog", "embass"],
-        "tags": ["nextjs", "azure"]
-    },
-    {
         "title": "US Embassy wait times",
         "path": "https://embass.io",
         "url": "www.embass.io",
@@ -106,5 +70,29 @@
         },
         "category": ["portfolio", "goobill"],
         "tags": ["static", "cloudflare"]
+    },
+    {
+        "title": "NHS AI Conference",
+        "path": "nhs-ai-conf-2025.html",
+        "url": "goobill.com",
+        "description": "A summary of what I noted at the 2025 NHS AI conference.",
+        "datetime": {
+            "label": "February 3rd 2025",
+            "value": "2025-02-03"
+        },
+        "category": ["blog", "conference", "medical"],
+        "tags": ["conference", "nhs"]
+    },
+    {
+        "title": "Rant about Account Innactivity",
+        "path": "rant-android-dev-acc.html",
+        "url": "goobill.com",
+        "description": "A summary of what I noted at the 2025 NHS AI conference.",
+        "datetime": {
+            "label": "February 3rd 2025",
+            "value": "2025-02-03"
+        },
+        "category": ["blog", "account"],
+        "tags": ["android", "rant"]
     }
 ]
