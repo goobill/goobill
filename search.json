@@ -87,10 +87,10 @@
         "title": "Rant about Account Innactivity",
         "path": "rant-android-dev-acc.html",
         "url": "goobill.com",
-        "description": "A summary of what I noted at the 2025 NHS AI conference.",
+        "description": "Rant about Android Dev account innactivity.",
         "datetime": {
-            "label": "February 3rd 2025",
-            "value": "2025-02-03"
+            "label": "September 2nd 2024",
+            "value": "2024-09-02"
         },
         "category": ["blog", "account"],
         "tags": ["android", "rant"]
