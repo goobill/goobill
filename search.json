@@ -84,7 +84,7 @@
         "tags": ["conference", "nhs"]
     },
     {
-        "title": "Rant about Account Innactivity",
+        "title": "Account Innactivity",
         "path": "rant-android-dev-acc.html",
         "url": "goobill.com",
         "description": "Rant about Android Dev account innactivity.",
@@ -92,7 +92,7 @@
             "label": "September 2nd 2024",
             "value": "2024-09-02"
         },
-        "category": ["blog", "account"],
-        "tags": ["android", "rant"]
+        "category": ["blog", "account", "rant"],
+        "tags": ["android"]
     }
 ]
