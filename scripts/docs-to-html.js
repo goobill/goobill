@@ -138,7 +138,7 @@ function wrapWithDiv() {
             children: [
               {
                 type: 'element',
-                tagName: 'marquee',
+                tagName: 'p',
                 children: [
                   {
                     type: 'element',
