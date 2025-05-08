@@ -23,7 +23,8 @@ const app = function () {
         canvas.style.height = `${height}px`;
 
         const ctx = canvas.getContext("2d");
-        draw(ctx, width, height);
+
+        setInterval(() => draw(ctx, width, height), 3000);
     });
 };
 
