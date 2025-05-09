@@ -24,7 +24,8 @@ const app = function () {
 
         const ctx = canvas.getContext("2d");
 
-        setInterval(() => draw(ctx, width, height), 3000);
+        draw(ctx, width, height)
+        setInterval(() => draw(ctx, width, height), 2200);
     });
 };
 
