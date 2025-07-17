@@ -199,7 +199,7 @@ async function processMarkdownFiles(directory, configPath) {
 
       const docOptions = {
         title: config ? config.title : name,
-        css: ["style/md.css"],
+        css: ["style/md.css", "style/results.css"],
         js: ["scripts/paint.js"],
         language: "en",
         link: [
