@@ -13,8 +13,457 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Hind+Siliguri:wght@300;400;500;600;700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style/results.css">
-    <script type="text/javascript" src="scripts/results.js"></script>
+    <style>
+        html, body {
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            font-family: "Arial", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            height: 100%;
+        }
+
+        .header {
+            background-color: #ececec;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-left: 15px;
+            padding-right: 15px;
+            border-bottom: 1px solid #c0c0c0;;
+        }
+
+        .sub-header {
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-right: 15px;
+            border-bottom: 1px solid #c0c0c0;;
+            padding-left: 5%;
+            white-space: nowrap;
+            overflow-x: hidden;
+            overflow-y: hidden;
+        }
+
+        .sub-header a {
+            color: black;
+            text-decoration:none;
+        }
+
+        .sub-header a[selected='true'] {
+            color: #eb4b4b;
+            border-bottom: 2px solid #eb4b4b;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: stretch;
+            height: 100%;
+        }
+        .search-logo img {
+            height: 50px;
+            width: 50px;
+            display: none;
+        }
+        .search-title {
+            font-size: 0;
+            text-decoration:none;
+        }
+        .search-title span {
+            font-weight: bold;
+            font-size: 40px;
+        }
+        .blue {
+            color: #4285F4;
+        }
+        .red {
+            color: #EA4335;
+        }
+        .yellow {
+            color: #FBBC05;
+        }
+        .green {
+            color: #34A853;
+        }
+
+        .search-bar {
+            background-color: #FFFFFF;
+            display: flex;         
+            border-radius: 5px;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;      
+            gap: 20px;
+            border: 1px solid #c0c0c0;
+            height: 30px;
+            padding: 5px;
+        }
+
+        .search-bar input {
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            padding-left: 10px;
+            width: 600px;
+        }
+        .search-bar input::placeholder {
+            color: rgb(168, 168, 168);
+        }
+
+        .icon-hist {
+            height: 20px;
+            width: 20px;
+        }
+
+        .icon-mag-mic {
+            height: 25px;
+            width: 25px;
+        }
+
+        #search-bar-button {
+            display: flex;         
+            flex-direction: row;
+            justify-content: center;       
+            align-items: center;
+            background-color: #008cff;
+            border: 1px solid #f6f6f6;
+            outline: none;
+            color: black;
+            border-radius: 7px;
+            padding: 6px 30px;
+            cursor: pointer; 
+            text-align: center;
+            font-size: 14px;
+            text-decoration:none;
+        }
+        #search-bar-button a {
+            background-color: #008cff;
+        }
+
+        #search-bar-button button:hover {
+            border: 1px solid #dcdcdc; /* Light gray border */
+        }
+
+        @media (max-width: 1000px) {
+            .search-bar {
+                flex: 1;
+            }
+        }
+
+        .results {
+            flex: 1;
+            display: flex;         
+            flex-direction: column;
+            /* justify-content: center;       
+            align-items: center;       */
+            gap: 20px;   
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+
+        .results-metrics {
+            color: #c5c5c5;
+            margin-top: 10px;
+        }
+
+        .results-empty {
+            height: 100%;
+        }
+
+        .result {
+            margin-left: 0px;
+            padding-bottom: 20px;
+        }
+
+        .result-date {
+            font-size: 12px;
+            color: #7c7c7c;
+        }
+
+        .result-url {
+            color: green;
+        }
+
+        .result-desc {
+            max-width: 700px;
+            padding-bottom: 5px;
+        }
+
+        .result-tags a {
+            font-size: 12px;
+            text-decoration:none;
+        }
+
+        .pagination {
+            display: flex;         
+            flex-direction: column;
+            gap: 20px;   
+            padding-left: 10%;
+            padding-right: 10%;
+            padding-bottom: 20px;
+            padding-top: 20px;
+        }
+        .pagination-center {
+            display: flex;         
+            flex-direction: column;
+            justify-content: center;       
+            align-items: center;      
+            width: 200px;
+        }
+        .pagination-title {
+            font-size: 0;
+        }
+        .pagination-title span {
+            font-weight: bold;
+            font-size: 25px;
+        }
+        .pagination-title a {
+            font-size: 15px;
+            padding-left: 3px;
+            padding-right: 3px;
+        }
+
+        @media (max-width: 1000px) {
+            .results {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+            .sub-header {
+                padding-left: 30px;
+            }
+            .search-bar input {
+                width: 60%;
+            }
+            .search-title {
+                display: none;
+            }
+            .search-logo img {
+                display: block;
+            }
+        }
+
+        .footer {
+            background-color: #ececec;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .footer-button {
+            padding-right: 15px;
+        }
+    </style>
+    <script>
+        const queryResults = function (
+            resultsMatrix, searchValue
+        ) {
+            const searchRegex = new RegExp(searchValue, "i")
+            return resultsMatrix.filter(
+                result => searchRegex.test(result.title) ||
+                    searchRegex.test(result.description) ||
+                    result.category.some(category => searchRegex.test(category)) ||
+                    result.tags.some(tag => searchRegex.test(tag))
+            )
+        }
+
+        const search = function (
+            searchValue
+        ) {
+            window.open(`?q=${searchValue}`, "_self");
+        }
+
+        const addSearchButtonListener = function (
+            searchBarButtonDOM, searchBarInputDOM
+        ) {
+            const pointerDownHandler = function (e) {
+                e.preventDefault();
+                
+                const searchValue = searchBarInputDOM.value
+
+                search(searchValue)
+            };
+
+            searchBarButtonDOM.addEventListener('mousedown', pointerDownHandler, { passive: false });
+            searchBarButtonDOM.addEventListener('touchstart', pointerDownHandler, { passive: false });
+        };
+
+        const addSearchInputListener = function (
+            searchBarInputDOM
+        ) {
+            const pointerDownHandler = function (e) {
+                if (e.key === 'Enter') { 
+                    const searchValue = searchBarInputDOM.value
+            
+                    search(searchValue)
+                }
+            };
+
+            searchBarInputDOM.addEventListener('keydown', pointerDownHandler, { passive: false });
+        };
+
+        const addPaginationListener = function (pageDOM, urlParams) {
+            const pageNumber = pageDOM.getAttribute("page") || 1
+            const pointerDownHandler = function (e) {
+                e.preventDefault();
+
+                urlParams.set("p", pageNumber);
+                window.open(`?${urlParams}`, "_self");
+            };
+
+            pageDOM.addEventListener('mousedown', pointerDownHandler, { passive: false });
+            pageDOM.addEventListener('touchstart', pointerDownHandler, { passive: false });
+        }
+
+        const renderMetrics = function (resultsDOM, resultsTotal) {
+            metricsDOM = document.createElement('div');
+            metricsDOM.setAttribute("class", "results-metrics");
+            resultsDOM.appendChild(metricsDOM)
+
+            const content = `About ${resultsTotal} results (${Math.random().toFixed(2)} seconds)`
+            metricsDOM.textContent = content
+        }
+
+        const renderEmptyResult = function (resultsDOM) {
+            marqueDOM = document.createElement('marquee');
+            marqueDOM.setAttribute("class", "results-empty");
+            marqueDOM.setAttribute("direction", "down");
+            marqueDOM.setAttribute("behavior", "alternate");
+            innerDOM = document.createElement('marquee');
+            innerDOM.setAttribute("behavior", "alternate");
+            innerDOM.textContent = "nothing here mate";
+            marqueDOM.appendChild(innerDOM);
+            resultsDOM.appendChild(marqueDOM);
+        }
+
+        const renderResult = function (resultsDOM, result) {
+            const title = result["title"]
+            const path = result["path"]
+            const url = result["url"]
+            const description = result["description"]
+            const tags = result["tags"]
+
+            resultDOM = document.createElement('div');
+            resultDOM.setAttribute("class", "result");
+            resultsDOM.appendChild(resultDOM);
+
+            linkDOM = document.createElement('a');
+            linkDOM.setAttribute("class", "result-link");
+            linkDOM.setAttribute("href", path);
+            linkDOM.textContent = title;
+            resultDOM.appendChild(linkDOM);
+
+            urlDOM = document.createElement('div');
+            urlDOM.setAttribute("class", "result-url");
+            urlDOM.textContent = url;
+            resultDOM.appendChild(urlDOM);
+
+            descDOM = document.createElement('div');
+            descDOM.setAttribute("class", "result-desc");
+            descDOM.textContent = description;
+            resultDOM.appendChild(descDOM);
+
+            tagsDOM = document.createElement('div');
+            tagsDOM.setAttribute("class", "result-tags");
+            resultDOM.appendChild(tagsDOM);
+
+            const lastIdx = tags.length > 0 ? tags.length - 1 : 0
+            tags.forEach((tag, idx) => {
+                tagDOM = document.createElement('a');
+                tagDOM.setAttribute("href", `?q=${tag}`);
+                tagDOM.textContent = tag;
+                tagsDOM.appendChild(tagDOM);
+
+                if (idx === lastIdx) {
+                    if (result["datetime"]) {
+                        dashDOM = document.createElement('a');
+                        dashDOM.textContent = " - ";
+                        tagsDOM.appendChild(dashDOM);
+
+                        const datetime_value = result["datetime"]["value"]
+                        const datetime_label = result["datetime"]["label"]
+
+                        dateDOM = document.createElement('time');
+                        dateDOM.setAttribute("class", "result-date");
+                        dateDOM.setAttribute("datetime", datetime_value);
+                        dateDOM.textContent = datetime_label;
+                        tagsDOM.appendChild(dateDOM);
+                    }
+                } else {
+                    dashDOM = document.createElement('a');
+                    dashDOM.textContent = " - ";
+                    tagsDOM.appendChild(dashDOM);
+                }
+            })
+        }
+
+        const app = function () {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const pageNumber = (urlParams.get('p') || 1) - 1
+            const query = urlParams.get('q')
+
+            // Add Search Listeners
+
+            const searchBarButtonDOM = document.getElementById("search-bar-button");
+            const searchBarInputDOM = document.getElementById("search-bar-input");
+
+            addSearchButtonListener(searchBarButtonDOM, searchBarInputDOM)
+            addSearchInputListener(searchBarInputDOM)
+
+            // Add Pagination Listener
+
+            document.querySelectorAll('.pagination-button').forEach(ele => addPaginationListener(ele, urlParams));
+
+            // Set Search Query
+
+            document.getElementById('search-bar-input').value = query
+
+            // Results
+
+            const dataResultsDOM = document.getElementById('data-results')
+            let resultsMatrix = dataResultsDOM ? JSON.parse(dataResultsDOM.textContent.trim() || "[]") : [];
+            if (query) {
+                resultsMatrix = queryResults(resultsMatrix, query)
+            }
+
+            // Render results
+
+            const resultsDOM = document.getElementById("results");
+
+            renderMetrics(resultsDOM, resultsMatrix.length)
+
+            const results = [];
+            const chunks = 7
+            for (let i = 0; i < resultsMatrix.length; i += chunks) {
+                results.push(resultsMatrix.slice(i, i + chunks));
+            }
+            const pageResults = pageNumber < results.length ? results[pageNumber] : []
+            
+            if (pageResults.length > 0) {
+                pageResults.forEach(result => renderResult(resultsDOM, result));
+            } else {
+                renderEmptyResult(resultsDOM)
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', app);
+    </script>
   </head>
   <body>
     <div class="container">

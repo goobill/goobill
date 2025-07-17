@@ -1,53 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site Map</title>
-    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="Goobill" />
-    <link rel="manifest" href="/favicon/site.webmanifest" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Hind+Siliguri:wght@300;400;500;600;700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style/results.css">
-    <style>
-      #results {
-         padding-top: 10px;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-        <div class="header">
-            <a href="index.html" class="search-logo">
-                <img src="favicon/favicon.svg" alt="logo"/>
-            </a>
-            <a href="index.html" class="search-title">
-                <span class="blue">G</span>
-                <span class="red">o</span>
-                <span class="yellow">o</span>
-                <span class="blue">b</span>
-                <span class="green">i</span>
-                <span class="red">l</span>
-                <span class="red">l</span>
-            </a>
-            <b>
-              TREASURE MAP
-            </b>
-        </div>
-        <div id="results" class="results">
-        </div>
-        <div class="footer">
-            <marquee>
-                <a class="footer-button" href="about.html">About</a>
-                <a class="footer-button" href="site-map.html">Site Map</a>
-                <a class="footer-button" href="cursed.html">Help</a>
-            </marquee>
-        </div>
-    </div>
-  </body>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Site Map</title>
+		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+		<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+		<link rel="shortcut icon" href="/favicon/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+		<meta name="apple-mobile-web-app-title" content="Goobill" />
+		<link rel="manifest" href="/favicon/site.webmanifest" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Hind+Siliguri:wght@300;400;500;600;700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+		<style>
+			html, body {
+				background-color: #ffffff;
+				margin: 0;
+				padding: 0;
+				font-family: "Arial", sans-serif;
+				font-weight: 400;
+				font-style: normal;
+				height: 100%;
+			}
+
+			.results {
+				flex: 1;
+				display: flex;         
+				flex-direction: column;
+				gap: 20px;   
+				padding-left: 5%;
+				padding-right: 5%;
+				padding-top: 10px;
+			}
+
+			.results-metrics {
+				color: #c5c5c5;
+				margin-top: 10px;
+			}
+
+			.results-empty {
+				height: 100%;
+			}
+
+			.result {
+				margin-left: 0px;
+				padding-bottom: 20px;
+			}
+
+			@media (max-width: 1000px) {
+				.results {
+					padding-left: 30px;
+					padding-right: 30px;
+				}
+			}
+
+			.footer {
+				background-color: #ececec;
+				padding-top: 20px;
+				padding-bottom: 20px;
+				padding-left: 15px;
+				padding-right: 15px;
+			}
+
+			.footer-button {
+				padding-right: 15px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="header">
+				<a href="index.html" class="search-logo">
+					<img src="favicon/favicon.svg" alt="logo"/>
+				</a>
+				<a href="index.html" class="search-title">
+					<span class="blue">G</span>
+					<span class="red">o</span>
+					<span class="yellow">o</span>
+					<span class="blue">b</span>
+					<span class="green">i</span>
+					<span class="red">l</span>
+					<span class="red">l</span>
+				</a>
+				<b>
+				TREASURE MAP
+				</b>
+			</div>
+			<div class="results">
+			</div>
+			<div class="footer">
+				<marquee>
+					<a class="footer-button" href="about.html">About</a>
+					<a class="footer-button" href="site-map.html">Site Map</a>
+					<a class="footer-button" href="cursed.html">Help</a>
+				</marquee>
+			</div>
+		</div>
+	</body>
 </html>

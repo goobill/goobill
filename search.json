@@ -24,6 +24,30 @@
         "tags": ["static", "cloudflare"]
     },
     {
+        "title": "My Github Profile",
+        "path": "https://github.com/goobill",
+        "url": "github.com/goobill",
+        "description": "Where all my code is stored that I have created since I first started properly coding fun projects.",
+        "datetime": {
+            "label": "September 26th 2017",
+            "value": "2017-09-26"
+        },
+        "category": ["portfolio"],
+        "tags": ["github", "code"]
+    },
+    {
+        "title": "My Kaggle Profile",
+        "path": "https://www.kaggle.com/bill2bill",
+        "url": "www.kaggle.com/bill2bill",
+        "description": "Where my machine learning attempts are kept, incuding competition I have participated in and data sets I have created.",
+        "datetime": {
+            "label": "January 1st 2019",
+            "value": "2019-01-01"
+        },
+        "category": ["portfolio", "code"],
+        "tags": ["kaggle", "machine learning"]
+    },
+    {
         "title": "Generate a dashboard using iFrames in the browser",
         "path": "dashboard-generator.html",
         "url": "dash.goobill.com",
