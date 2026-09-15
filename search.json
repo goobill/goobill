@@ -1,7 +1,7 @@
 [
     {
         "title": "US Embassy wait times",
-        "path": "https://embass.io",
+        "path": "https://embassies-io-git-master-bill2bill.vercel.app/",
         "url": "www.embass.io",
         "description": "Search current location for the top US embassies nearby, sorted by waiting time for convenience.",
         "datetime": {
